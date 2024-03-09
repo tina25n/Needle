@@ -1,21 +1,29 @@
 import pygame
 from const import *
+from enum import Enum
+from drawing import StartMenu
 
-
-screen = pygame.display.set_mode((width, height))
+# screen
 pygame.display.set_caption('Sixth Sense')
-screen.fill(red)
-pygame.display.flip()
 
+# drawing classes
+
+startMenu = StartMenu()
+
+
+# system
 running = True
-
+cur_state = "start"
 
 # game loop 
 while running: 
-    
-# for loop through the event queue   
     for event in pygame.event.get(): 
-      
-        # Check for QUIT event       
         if event.type == pygame.QUIT: 
             running = False
+
+    screen.fill(white)
+
+    if (cur_state == "start"):
+        startMenu.draw()
+
+    pygame.display.flip()
