@@ -104,6 +104,7 @@ while running:
                         elif(curr_player==2):
                             curr_player=1
                             curr_rounds +=1
+                            
                     
                     gameScreen = questionScreen(qs.qsDict, curr_rounds, curr_player)
                     gameScreen.update()
@@ -146,6 +147,8 @@ while running:
     if (cur_state == "score"):
         screen.fill(white)
         screen.blit(bg_img, bg_img_rect)
+        finalScreen = scoreScreen([0,1,0,0,1])
+        finalScreen.update()
 
 
     pygame.display.flip()

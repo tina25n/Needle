@@ -1,5 +1,6 @@
 import pygame
 from const import *
+from logic import sumSocre
 
 class questionScreen:
     def __init__(self, qs, q_count, cur_player):
@@ -69,3 +70,46 @@ class answerButton:
                 return 2
         else:
             return 0
+
+class scoreScreen:
+    def __init__(self, scores):
+        self.rectWidth = width / 3 - 20
+        self.rectHeight = height / 7 - 50
+        self.x = (width / 2) - (self.rectWidth / 2)
+        self.y = ((height / 12) * 11) 
+        self.offset = 100
+
+        score=sumSocre(scores)
+
+        if(score <= 100 and score >=80):
+            title="Are you twins? You both definitely have a sixth-sense!"
+        elif(score <80 and score >=50):
+            title = "Maybe you do, maybe you don't? You have some kind of connection!"
+        else:
+            title = "Is the sixth-sense in the room with us? Time to learn more about each other."
+
+        # Title display
+        self.titletxt = fontLarge.render(title, True, orange, white)
+        self.titletxtRect = self.titletxt.get_rect()
+        self.titletxtRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 130)
+
+        # Score display
+        self.scoretxt = fontLarge.render("Score: " + str(score), True, orange, white)
+        self.scoretxtRect = self.scoretxt.get_rect()
+        self.scoretxtRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 130)
+
+        self.textpa = font.render('Play Again', True, white, red)
+        self.textpaRect = self.textpa.get_rect()
+        self.textpaRect.center = (width / 2, self.y - (self.rectHeight / 2) + 27)
+        self.yPlay = (self.y) - (self.rectHeight / 2)
+        self.paButtonRect = pygame.Rect(self.x, self.yPlay, self.rectWidth, self.rectHeight)
+
+    def drawPAButton(self):
+        pygame.draw.rect(screen, red, self.paButtonRect,  0, 3)
+        screen.blit(self.textpa, self.textpaRect)
+
+    def update(self):
+        screen.blit(self.scoretxt, self.scoretxtRect)
+        screen.blit(self.titletxt, self.titletxtRect)
+        self.drawPAButton()
+        
