@@ -113,7 +113,8 @@ while running:
                     gameScreen = questionScreen(qs.qsDict, curr_rounds, curr_player)
                     gameScreen.update()
 
-
+            if (cur_state == "score"):
+                pass
 
 
 

@@ -1,4 +1,5 @@
 import random
+import women_package
 
 class questionsDict:
     def __init__(self):
@@ -26,7 +27,49 @@ class questionsDict:
                     "simple": q4_simple(),
                     "medium": q4_medium(),
                     "hard": q4_difficult()
+                },
+                "Q5" : {
+                    "question": "Imagine you have a tail, how long would it be?",
+                    "simple": q5_simple(),
+                    "medium": q5_medium(),
+                    "hard": q5_difficult()
+
+                },
+                "Q6" : {
+                    "question": "Look at your desk, what is the first thing you see",
+                    "simple": q6_simple(),
+                    "medium": q6_medium(),
+                    "hard": q6_difficult()
+
+                },
+                "Q7": {
+                    "question": "You are listening to the music, how do you feel?",
+                    "simple": q7_simple(),
+                    "medium": q7_medium(),
+                    "hard": q7_difficult()
+                },
+                "Q8" : {
+                    "question": "You are in a cave and you are going out after some uncountable time, what time is it now?",
+                    "simple": q8_simple(),
+                    "medium": q8_medium(),
+                    "hard": q8_difficult()
+
+                },
+                "Q9" : {
+                    "question": "Choose one drink to match the vibe",
+                    "simple" : q9_simple(),
+                    "medium": q9_medium(),
+                    "hard": q9_difficult()
+
+                },
+                "Q10" : {
+                    "question": "Thinking of your passion, which element come closer to your passion",
+                    "simple" : q10_simple(),
+                    "medium": q10_medium(),
+                    "hard": q10_difficult()
+
                 }
+
                 }
 
 # randomly generate 2 numbers from 1-34
@@ -142,6 +185,182 @@ def q4_difficult():
     directions = ["west", "east", "north", "south","northwest", "southwest", "northeast", "southeast"]
     return directions
 
+def q5_simple(): 
+    answer = []
+    length = ["20cm", "30cm", "40cm", "50cm", "60cm", "70cm", "80cm", "90cm", "1m", "2m"]
+    for i in range(2):
+        n = length[random.randint(0, 9)]
+        while (n in answer):
+            n = length[random.randint(0, 9)]
+        answer.append(n)
+    return answer
+
+def q5_medium(): 
+    answer = []
+    length = ["20cm", "30cm", "40cm", "50cm", "60cm", "70cm", "80cm", "90cm", "1m", "2m"]
+    for i in range(4):
+        n = length[random.randint(0, 9)]
+        while (n in answer):
+            n = length[random.randint(0, 9)]
+        answer.append(n)
+    return answer
+
+def q5_difficult(): 
+    answer = []
+    length = ["20cm", "30cm", "40cm", "50cm", "60cm", "70cm", "80cm", "90cm", "1m", "2m"]
+    for i in range(6):
+        n = length[random.randint(0, 9)]
+        while (n in answer):
+            n = length[random.randint(0, 9)]
+        answer.append(n)
+    return answer
+
+
+def q6_simple():
+    answer = []
+    items = ["laptop", "book", "stuffed animal", "pen", "phone", "plant"]
+    for i in range(2):
+        n = items[random.randint(0, 5)]
+        while (n in answer):
+            n = items[random.randint(0, 5)]
+        answer.append(n)
+    return answer
+
+def q6_medium():
+    answer = []
+    items = ["laptop", "book", "stuffed animal", "pen", "phone", "plant"]
+    for i in range(4):
+        n = items[random.randint(0, 5)]
+        while (n in answer):
+            n = items[random.randint(0, 5)]
+        answer.append(n)
+    return answer
+
+def q6_difficult():
+    
+    items = ["laptop", "book", "stuffed animal", "pen", "phone", "plant"]
+    return items
+
+def q7_simple():
+    answer = []
+    emotions = ["Happiness", "Sadness", "Anger", "Fear", "Surprise", "Love", "Envy", "Confusion", "Excitement"];
+    for i in range(2):
+        n = emotions[random.randint(0, 8)]
+        while (n in answer):
+            n = emotions[random.randint(0, 8)]
+        answer.append(n)
+    return answer
+
+def q7_medium():
+    answer = []
+    emotions = ["Happiness", "Sadness", "Anger", "Fear", "Surprise", "Love", "Envy", "Confusion", "Excitement"];
+    for i in range(4):
+        n = emotions[random.randint(0, 8)]
+        while (n in answer):
+            n = emotions[random.randint(0, 8)]
+        answer.append(n)
+    return answer
+
+
+def q7_difficult():
+    answer = []
+    emotions = ["Happiness", "Sadness", "Anger", "Fear", "Surprise", "Love", "Envy", "Confusion", "Excitement"];
+    for i in range(6):
+        n = emotions[random.randint(0, 8)]
+        while (n in answer):
+            n = emotions[random.randint(0, 8)]
+        answer.append(n)
+    return answer
+
+def q8_simple():
+    answer = []
+    times = ["6 AM", "9 AM", "Noon", "3 PM", "6 PM", "9 PM", "Midnight", "3 AM", "4:30 AM", "7:45 PM"]
+    for i in range(2):
+        n = times[random.randint(0, 9)]
+        while (n in answer):
+            n = times[random.randint(0, 9)]
+        answer.append(n)
+    return answer
+
+def q8_medium():
+    answer = []
+    times = ["6 AM", "9 AM", "Noon", "3 PM", "6 PM", "9 PM", "Midnight", "3 AM", "4:30 AM", "7:45 PM"]
+    for i in range(4):
+        n = times[random.randint(0, 9)]
+        while (n in answer):
+            n = times[random.randint(0, 9)]
+        answer.append(n)
+    return answer
+
+
+def q8_difficult():
+    answer = []
+    times = ["6 AM", "9 AM", "Noon", "3 PM", "6 PM", "9 PM", "Midnight", "3 AM", "4:30 AM", "7:45 PM"]
+    for i in range(6):
+        n = times[random.randint(0, 9)]
+        while (n in answer):
+            n = times[random.randint(0, 9)]
+        answer.append(n)
+    return answer
+
+
+def q9_simple():
+    answer = []
+    drinks = ["Electric Lemonade", "Cosmic Cranberry Blast", "Mango Tango Twist", "Blueberry Blitz", "Raspberry Rapture", "Citrus Cyclone", "Pineapple Paradise Punch", "Watermelon Whirlwind", "Kiwi Kiss", "Guava Galaxy Splash"]
+    for i in range(2):
+        n = drinks[random.randint(0, 8)]
+        while (n in answer):
+            n = drinks[random.randint(0, 8)]
+        answer.append(n)
+    return answer
+
+def q9_medium():
+    answer = []
+    drinks = ["Electric Lemonade", "Cosmic Cranberry Blast", "Mango Tango Twist", "Blueberry Blitz", "Raspberry Rapture", "Citrus Cyclone", "Pineapple Paradise Punch", "Watermelon Whirlwind", "Kiwi Kiss", "Guava Galaxy Splash"]
+    for i in range(4):
+        n = drinks[random.randint(0, 8)]
+        while (n in answer):
+            n = drinks[random.randint(0, 8)]
+        answer.append(n)
+    return answer
+
+
+def q9_difficult():
+    answer = []
+    drinks = ["Electric Lemonade", "Cosmic Cranberry Blast", "Mango Tango Twist", "Blueberry Blitz", "Raspberry Rapture", "Citrus Cyclone", "Pineapple Paradise Punch", "Watermelon Whirlwind", "Kiwi Kiss", "Guava Galaxy Splash"]
+    for i in range(6):
+        n = drinks[random.randint(0, 8)]
+        while (n in answer):
+            n = drinks[random.randint(0, 8)]
+        answer.append(n)
+    return answer
+
+
+def q10_simple(): 
+    answer = []
+    elements = ["earth", "water", "fire", "air", "space", "consciousness"]
+    for i in range(2):
+        n = elements[random.randint(0, 5)]
+        while (n in answer):
+            n = elements[random.randint(0, 5)]
+        answer.append(n)
+    return answer
+
+
+def q10_medium(): 
+    answer = []
+    elements = ["earth", "water", "fire", "air", "space", "consciousness"]
+    for i in range(4):
+        n = elements[random.randint(0, 5)]
+        while (n in answer):
+            n = elements[random.randint(0, 5)]
+        answer.append(n)
+    return answer
+
+
+def q10_difficult(): 
+    elements = ["earth", "water", "fire", "air", "space", "consciousness"]
+    return elements
 
 # takes the user input when the buttons are clicked for user 1 and 2
 def compare(a1, a2, scores):

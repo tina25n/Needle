@@ -82,21 +82,29 @@ class scoreScreen:
         score=sumSocre(scores)
 
         if(score <= 100 and score >=80):
-            title="Are you twins? You both definitely have a sixth-sense!"
+            title="Are you twins?"
+            subtitle = "You both definitely have a sixth-sense!"
         elif(score <80 and score >=50):
-            title = "Maybe you do, maybe you don't? You have some kind of connection!"
+            title = "Maybe you do, maybe you don't?"
+            subtitle = "You have some kind of connection!"
         else:
-            title = "Is the sixth-sense in the room with us? Time to learn more about each other."
-
+            title = "Is the sixth-sense in the room with us?"
+            subtitle = "Time to learn more about each other."
         # Title display
         self.titletxt = fontLarge.render(title, True, orange, white)
         self.titletxtRect = self.titletxt.get_rect()
+        self.titletxtRect.y = self.y + 50
         self.titletxtRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 130)
+
+        # subTitle display
+        self.subtitletxt = fontLarge.render(subtitle, True, orange, white)
+        self.subtitletxtRect = self.subtitletxt.get_rect()
+        self.subtitletxtRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 130)
 
         # Score display
         self.scoretxt = fontLarge.render("Score: " + str(score), True, orange, white)
         self.scoretxtRect = self.scoretxt.get_rect()
-        self.scoretxtRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 130)
+        self.scoretxtRect.center = (width / 2, ((height) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 130)
 
         self.textpa = font.render('Play Again', True, white, red)
         self.textpaRect = self.textpa.get_rect()
@@ -109,7 +117,8 @@ class scoreScreen:
         screen.blit(self.textpa, self.textpaRect)
 
     def update(self):
+        self.drawPAButton()
         screen.blit(self.scoretxt, self.scoretxtRect)
         screen.blit(self.titletxt, self.titletxtRect)
-        self.drawPAButton()
+        screen.blit(self.subtitletxt, self.subtitletxtRect)
         
