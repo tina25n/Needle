@@ -1,7 +1,7 @@
 import pygame
 from const import *
 from enum import Enum
-from drawing import StartMenu, SettingsMenu
+from drawingStarting import StartMenu, SettingsMenu, PackageMenu
 
 pygame.init()
 
@@ -10,7 +10,8 @@ pygame.display.set_caption('Sixth Sense')
 
 # drawing classes
 startMenu = StartMenu()
-SettingsMenu = SettingsMenu()
+settingsMenu = SettingsMenu()
+packageMenu = PackageMenu()
 
 #background
 start_bg_img = pygame.image.load("Sixth Sense.png")
@@ -23,6 +24,7 @@ bg_img_rect = bg_img.get_rect()
 # system
 running = True
 cur_state = "start"
+clickedOnce = False
 
 # game loop 
 while running: 
@@ -30,17 +32,37 @@ while running:
         if event.type == pygame.QUIT: 
             running = False
         if event.type == pygame.MOUSEBUTTONUP:
+            clickedOnce = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
-            
+            #start
             if (cur_state == "start"):
-                if (startMenu.checkClickSettings(pos)):
+                if (startMenu.checkClickSettings(pos) and (not clickedOnce)):
                     cur_state = "settings"
-                if (startMenu.checkClickEndGame(pos)):
+                    clickedOnce = True
+                if (startMenu.checkClickEndGame(pos) and (not clickedOnce)):
                     running = False
                     pygame.display.quit()
                     pygame.quit()
+            #settings
+            if (cur_state == "settings"):
+                if (settingsMenu.checkClickSimple and (not clickedOnce)):
+                    cur_state = "packages"
+                    clickedOnce = True
+                if (settingsMenu.checkClickMed and (not clickedOnce)):
+                    cur_state = "packages"
+                    clickedOnce = True
+                if (settingsMenu.checkClickHard and (not clickedOnce)):
+                    cur_state = "packages"
+                    clickedOnce = True
+            # package
+            if (cur_state == "packages"):
+                if (packageMenu.checkClickPackage1 and (not clickedOnce)):
+                    cur_state = "game"      
+                if (packageMenu.checkClickPackage2 and (not clickedOnce)):
+                    cur_state = "game"                   
 
-    # start menu
+    # start menu 
     if (cur_state == "start"):
         screen.fill(white)
         screen.blit(start_bg_img, start_bg_img_rect)
@@ -50,8 +72,17 @@ while running:
     if (cur_state == "settings"):
         screen.fill(white)
         screen.blit(bg_img, bg_img_rect)
-        SettingsMenu.update()
+        settingsMenu.update()
 
+    # package menu
+    if (cur_state == "packages"):
+        screen.fill(white)
+        screen.blit(bg_img, bg_img_rect)
+        packageMenu.update()
     
+    # game
+    if (cur_state == "game"):
+        screen.fill(white)
+        screen.blit(bg_img, bg_img_rect)
 
     pygame.display.flip()
