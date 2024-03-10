@@ -10,6 +10,7 @@ pygame.display.set_caption('Sixth Sense')
 
 # drawing classes
 startMenu = StartMenu()
+SettingsMenu = SettingsMenu()
 
 #background
 start_bg_img = pygame.image.load("Sixth Sense.png")
@@ -49,6 +50,8 @@ while running:
     if (cur_state == "settings"):
         screen.fill(white)
         screen.blit(bg_img, bg_img_rect)
+        SettingsMenu.update()
+
     
 
     pygame.display.flip()

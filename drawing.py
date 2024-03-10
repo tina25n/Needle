@@ -43,4 +43,14 @@ class StartMenu():
 
 class SettingsMenu:
     def __init__(self):
-        pass
+
+        self.packText = font.render('Choose an Additional Package', True, orange, white)
+        self.packtextRect = self.packText.get_rect()
+        self.packtextRect.center = (width / 2, ((height / 5) * 4) - (height / 2) - 35)
+        self.ypacktext = ((height / 5) * 4) - (height / 2) - 73
+
+    def drawText(self):
+        screen.blit(self.packText, self.packtextRect)
+
+    def update(self):
+        self.drawText()
