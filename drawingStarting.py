@@ -117,14 +117,14 @@ class PackageMenu:
         self.simpleButtonRect = pygame.Rect(self.x, self.yPlay, self.rectWidth, self.rectHeight)
 
         # package 1
-        self.textMed = font.render('Package2', True, white, red)
+        self.textMed = font.render('Queer Coded', True, white, red)
         self.textMedRect = self.textMed.get_rect()
         self.textMedRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - self.offset + (self.rectHeight + 10))
         self.yPlay = ((height / 5) * 3) - (self.rectHeight / 2) - 50 - self.offset + (self.rectHeight + 10)
         self.medButtonRect = pygame.Rect(self.x, self.yPlay, self.rectWidth, self.rectHeight)
 
         # package 2
-        self.textHard = font.render('Package3', True, white, red)
+        self.textHard = font.render('Girl Boss', True, white, red)
         self.textHardRect = self.textHard.get_rect()
         self.textHardRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - self.offset + ((self.rectHeight + 10) * 2))
         self.yPlay = ((height / 5) * 3) - (self.rectHeight / 2) - 50 - self.offset + ((self.rectHeight + 10)*2)
