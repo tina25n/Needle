@@ -25,7 +25,7 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONUP:
             pos = pygame.mouse.get_pos()
-            if (startMenu.checkClickRunGame(pos)):
+            if (startMenu.checkClickSettings(pos)):
                 cur_state = "running"
             if (startMenu.checkClickEndGame(pos)):
                 running = False
@@ -39,7 +39,7 @@ while running:
     if (cur_state == "start"):
         startMenu.update()
 
-    if (cur_state == "game"):
+    if (cur_state == "settings"):
         pass
     
 
