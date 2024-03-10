@@ -10,6 +10,7 @@ pygame.display.set_caption('Sixth Sense')
 
 # drawing classes
 startMenu = StartMenu()
+settingsMenu = SettingsMenu()
 
 #background
 start_bg_img = pygame.image.load("Sixth Sense.png")
@@ -30,7 +31,7 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONUP:
             pos = pygame.mouse.get_pos()
-            
+            #start
             if (cur_state == "start"):
                 if (startMenu.checkClickSettings(pos)):
                     cur_state = "settings"
@@ -38,6 +39,22 @@ while running:
                     running = False
                     pygame.display.quit()
                     pygame.quit()
+            #settings
+            if (cur_state == "settings"):
+                if (startMenu.checkClickSettings(pos)):
+                    cur_state = "settings"
+                if (startMenu.checkClickEndGame(pos)):
+                    running = False
+                    pygame.display.quit()
+                    pygame.quit()    
+
+            if (cur_state == "settings"):
+                if (settingsMenu.checkClickSimple):
+                    pass
+                if (settingsMenu.checkClickMed):
+                    pass
+                if (settingsMenu.checkClickHard):
+                    pass
 
     # start menu
     if (cur_state == "start"):
@@ -49,6 +66,7 @@ while running:
     if (cur_state == "settings"):
         screen.fill(white)
         screen.blit(bg_img, bg_img_rect)
+        settingsMenu.update()
     
 
     pygame.display.flip()
