@@ -27,8 +27,8 @@ class questionScreen:
         self.yPlay = (self.y) - (self.rectHeight / 2)
         self.nextButtonRect = pygame.Rect(self.x, self.yPlay, self.rectWidth, self.rectHeight)
 
-    def checkClickNext(self, pos):
-        return self.nextButtonRect.collidepoint(pos)
+    def checkClickNext(self, poss):
+        return self.nextButtonRect.collidepoint(poss)
     
     def drawNextButton(self):
         pygame.draw.rect(screen, red, self.nextButtonRect,  0, 3)
@@ -38,3 +38,34 @@ class questionScreen:
         screen.blit(self.q1, self.q1Rect)
         screen.blit(self.player, self.playerRect)
         self.drawNextButton()
+
+class answerButton:
+    def __init__(self, y, text, player):
+        self.rectWidth = width / 3 - 20
+        self.rectHeight = height / 7 - 50
+        self.x = (width / 2) - (self.rectWidth / 2)
+        self.offset = 200
+        self.y = y
+        self.ansText = text
+        self.player = player
+        #((height / 5) * 3) - (self.rectHeight / 2) - 50
+
+        # default
+        self.textAns = font.render(self.ansText, True, white, red)
+        self.textAnsRect = self.textAns.get_rect()
+        self.textAnsRect.center = (width / 2, self.y - ((height / 7) / 4) - self.offset)
+        self.yAns = self.y - 50 - self.offset
+        self.simpleButtonRect = pygame.Rect(self.x, self.yAns, self.rectWidth, self.rectHeight)
+
+    def drawButtons(self):
+        pygame.draw.rect(screen, red, self.simpleButtonRect,  0, 3)
+        screen.blit(self.textAns, self.textAnsRect)
+
+    def checkClickAns(self, pos, player):
+        if (self.simpleButtonRect.collidepoint(pos)):
+            if (player == 1):
+                return 1
+            if (player == 2):
+                return 2
+        else:
+            return 0

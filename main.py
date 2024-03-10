@@ -2,7 +2,7 @@ import pygame
 from const import *
 from enum import Enum
 from drawingStarting import StartMenu, SettingsMenu, PackageMenu
-from drawingGame import questionScreen
+from drawingGame import *
 from logic import questionsDict
 
 pygame.init()
@@ -31,6 +31,7 @@ bg_img_rect = bg_img.get_rect()
 running = True
 cur_state = "start"
 clickedOnce = False
+ansList = []
 
 # game loop 
 while running: 
@@ -53,33 +54,40 @@ while running:
                     pygame.quit()
             #settings
             if (cur_state == "settings"):
-                if (settingsMenu.checkClickSimple and (not clickedOnce)):
+                if (settingsMenu.checkClickSimple(pos) and (not clickedOnce)):
                     cur_state = "packages"
                     clickedOnce = True
-                if (settingsMenu.checkClickMed and (not clickedOnce)):
+                if (settingsMenu.checkClickMed(pos) and (not clickedOnce)):
                     cur_state = "packages"
                     clickedOnce = True
-                if (settingsMenu.checkClickHard and (not clickedOnce)):
+                if (settingsMenu.checkClickHard(pos) and (not clickedOnce)):
                     cur_state = "packages"
                     clickedOnce = True
             # package
             if (cur_state == "packages"):
-                if (packageMenu.checkClickPackage1 and (not clickedOnce)):
+                if (packageMenu.checkClickPackage1(pos) and (not clickedOnce)):
                     cur_state = "game"
                     clickedOnce = True      
-                if (packageMenu.checkClickPackage2 and (not clickedOnce)):
+                if (packageMenu.checkClickPackage2(pos) and (not clickedOnce)):
                     cur_state = "game"
                     clickedOnce = True
-                if (packageMenu.checkClickPackage3 and (not clickedOnce)):
+                if (packageMenu.checkClickPackage3(pos) and (not clickedOnce)):
                     cur_state = "game"
                     clickedOnce = True     
 
             if (cur_state =="game"):
-                while (curr_rounds <rounds):
-                    gameScreen.update()
-                    if (questionScreen.checkClickNext(pos) and (not clickedOnce)):
-                        #NEXT QUESTION / PLAYER 2 TURN FUNCTIONALITY
-                        clickedOnce = True
+                for ans in ansList:
+                    if (ans.checkClickAns(pos, curr_player) > 0 and (not clickedOnce)):
+                        if (ans.checkClickAns(pos, curr_player) == 1):
+                            print("p1 add 1")
+                            clickedOnce = True
+                        if (ans.checkClickAns(pos, curr_player) == 2):
+                            print("p1 add 2")
+                            clickedOnce = True
+                if (questionScreen.checkClickNext and (not clickedOnce)):
+                    #NEXT QUESTION / PLAYER 2 TURN FUNCTIONALITY
+                    print("click")
+                    clickedOnce = True
 
     # start menu 
     if (cur_state == "start"):
@@ -103,6 +111,11 @@ while running:
     if (cur_state == "game"):
         screen.fill(white)
         screen.blit(bg_img, bg_img_rect)
+        ansList.clear()
+        for i in range(6):
+            ansList.append(answerButton((((height / 5) * 3) - ((height / 7 - 50)) / 2) + (((height / 7 - 50) + 10) * i), "ans", 1))
+        for ans in ansList:
+            ans.drawButtons()
         gameScreen.update()
 
     pygame.display.flip()
