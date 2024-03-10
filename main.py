@@ -2,16 +2,22 @@ import pygame
 from const import *
 from enum import Enum
 from drawingStarting import StartMenu, SettingsMenu, PackageMenu
+from drawingGame import questionScreen
+from logic import questionsDict
 
 pygame.init()
 
 # screen
 pygame.display.set_caption('Sixth Sense')
+curr_rounds = 1
 
 # drawing classes
 startMenu = StartMenu()
 settingsMenu = SettingsMenu()
 packageMenu = PackageMenu()
+qs = questionsDict()
+#["Q1"]["question"]
+gameScreen = questionScreen(qs.qsDict, curr_rounds)
 
 #background
 start_bg_img = pygame.image.load("Sixth Sense.png")
@@ -20,7 +26,6 @@ start_bg_img_rect = start_bg_img.get_rect()
 bg_img = pygame.image.load("Questions.png")
 bg_img_rect = bg_img.get_rect()
 
-
 # system
 running = True
 cur_state = "start"
@@ -28,6 +33,7 @@ clickedOnce = False
 
 # game loop 
 while running: 
+    curr_rounds +=1
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT: 
             running = False
@@ -65,7 +71,11 @@ while running:
                     clickedOnce = True
                 if (packageMenu.checkClickPackage3 and (not clickedOnce)):
                     cur_state = "game"
-                    clickedOnce = True                       
+                    clickedOnce = True     
+
+            if (cur_state =="game"):
+                while (curr_rounds <rounds):
+                    gameScreen.update()
 
     # start menu 
     if (cur_state == "start"):
@@ -89,5 +99,6 @@ while running:
     if (cur_state == "game"):
         screen.fill(white)
         screen.blit(bg_img, bg_img_rect)
+        gameScreen.update()
 
     pygame.display.flip()

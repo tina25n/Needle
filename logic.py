@@ -1,7 +1,33 @@
 import random
 
-# dictionary of questions and options
-
+class questionsDict:
+    def __init__(self):
+        #Dictionary
+        self.qsDict = {"Q1": {
+                    "question": "You are in an elevator, which floor are you going to?",
+                    "simple": q1_simple,
+                    "medium": q1_medium,
+                    "hard": q1_hard
+                },
+                "Q2": {
+                    "question": "which number looks good to you?",
+                    "simple": q2_simple,
+                    "medium": q2_medium,
+                    "hard": q2_hard
+                },
+                "Q3": {
+                    "question": "Pick your favorite color",
+                    "simple": q3_simple,
+                    "medium": q3_medium,
+                    "hard": q3_hard
+                },
+                "Q4": {
+                    "question": "If you are stuck in a desert, which direction would you go?",
+                    "simple": q4_simple,
+                    "medium": q4_medium,
+                    "hard": q4_hard
+                }
+                }
 
 # randomly generate 2 numbers from 1-34
 def q1_simple():
@@ -157,9 +183,36 @@ def sumSocre(scores):
 
     return round(bonus_score/len(scores), 2)
 
+#Dictionary
+questions = {"Q1": {
+                "question": "You are in an elevator, which floor are you going to?",
+                "simple": q1_simple,
+                "medium": q1_medium,
+                "hard": q1_hard
+                },
+                "Q2": {
+                    "question": "which number looks good to you?",
+                    "simple": q2_simple,
+                    "medium": q2_medium,
+                    "hard": q2_hard
+                },
+                "Q3": {
+                    "question": "Pick your favorite color",
+                    "simple": q3_simple,
+                    "medium": q3_medium,
+                    "hard": q3_hard
+                },
+                "Q4": {
+                    "question": "If you are stuck in a desert, which direction would you go?",
+                    "simple": q4_simple,
+                    "medium": q4_medium,
+                    "hard": q4_hard
+                }
+                }
 
 def main():
 
+    #Dictionary
     questions = {"Q1": {
                     "question": "You are in an elevator, which floor are you going to?",
                     "simple": q1_simple,
@@ -179,7 +232,7 @@ def main():
                     "hard": q3_hard
                 },
                 "Q4": {
-                    "question": "If you are stuck in dessert, which direction would you go?",
+                    "question": "If you are stuck in a desert, which direction would you go?",
                     "simple": q4_simple,
                     "medium": q4_medium,
                     "hard": q4_hard
