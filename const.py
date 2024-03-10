@@ -1,8 +1,11 @@
 import pygame
 
+pygame.font.init()
+
 width = 1280
 height = 720
 screen = pygame.display.set_mode((width, height))
+font = pygame.font.Font('freesansbold.ttf', 32)
 
 # IBM COLOR BLIND SAFE PALETTE
 red = (220, 38, 127)
