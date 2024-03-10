@@ -9,8 +9,6 @@ pygame.init()
 
 # screen
 pygame.display.set_caption('Sixth Sense')
-curr_rounds = 1
-curr_player = 1
 
 # drawing classes
 startMenu = StartMenu()
@@ -18,7 +16,7 @@ settingsMenu = SettingsMenu()
 packageMenu = PackageMenu()
 qs = questionsDict()
 #["Q1"]["question"]
-gameScreen = questionScreen(qs.qsDict, curr_rounds, curr_player)
+#gameScreen = questionScreen(qs.qsDict, curr_rounds, curr_player)
 
 #background
 start_bg_img = pygame.image.load("Sixth Sense.png")
@@ -35,7 +33,6 @@ ansList = []
 
 # game loop 
 while running: 
-    curr_rounds +=1
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT: 
             running = False
@@ -65,6 +62,8 @@ while running:
                     clickedOnce = True
             # package
             if (cur_state == "packages"):
+                curr_rounds = 1
+                curr_player = 0
                 if (packageMenu.checkClickPackage1(pos) and (not clickedOnce)):
                     cur_state = "game"
                     clickedOnce = True      
@@ -88,6 +87,31 @@ while running:
                     #NEXT QUESTION / PLAYER 2 TURN FUNCTIONALITY
                     print("click")
                     clickedOnce = True
+                clickedOnce = False
+                numqs=len(qs.qsDict)
+                if (questionScreen.checkClickNext and (not clickedOnce)):
+                        #NEXT QUESTION / PLAYER 2 TURN FUNCTIONALITY
+                    if(curr_rounds < rounds and curr_rounds<=numqs):
+                        #start player
+                        if(curr_player ==0):
+                            curr_player=1
+                        #endgame if round is last and player=2
+                        elif(curr_player ==2 and (curr_rounds ==rounds-1 or curr_rounds==numqs)):
+                            cur_state = "score"
+                        #display next player
+                        elif(curr_player==1):
+                            curr_player=2
+                        elif(curr_player==2):
+                            curr_player=1
+                            curr_rounds +=1
+                    
+                    gameScreen = questionScreen(qs.qsDict, curr_rounds, curr_player)
+                    gameScreen.update()
+
+
+                    
+
+
 
     # start menu 
     if (cur_state == "start"):
@@ -117,5 +141,11 @@ while running:
         for ans in ansList:
             ans.drawButtons()
         gameScreen.update()
+
+    #score
+    if (cur_state == "score"):
+        screen.fill(white)
+        screen.blit(bg_img, bg_img_rect)
+
 
     pygame.display.flip()
