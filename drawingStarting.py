@@ -49,7 +49,7 @@ class SettingsMenu:
         self.offset = 100
 
         # difficulty
-        self.textDiff = fontLarge.render('Select Difficulty:', True, red, white)
+        self.textDiff = fontLarge.render('Select Difficulty:', True, orange, white)
         self.textDiffRect = self.textDiff.get_rect()
         self.textDiffRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 30)
 
@@ -92,7 +92,61 @@ class SettingsMenu:
     def checkClickHard(self, pos):
         return self.hardButtonRect.collidepoint(pos)
 
+    def update(self):
+        screen.blit(self.textDiff, self.textDiffRect)
+        self.drawButtons()
 
+
+class PackageMenu:
+    def __init__(self):
+        self.rectWidth = width / 3 - 20
+        self.rectHeight = height / 7 - 50
+        self.x = (width / 2) - (self.rectWidth / 2)
+        self.offset = 100
+
+        # difficulty
+        self.textDiff = fontLarge.render('Select Package:', True, orange, white)
+        self.textDiffRect = self.textDiff.get_rect()
+        self.textDiffRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 30)
+
+        # default
+        self.textStart = font.render('Default', True, white, red)
+        self.textStartRect = self.textStart.get_rect()
+        self.textStartRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - self.offset)
+        self.yPlay = ((height / 5) * 3) - (self.rectHeight / 2) - 50 - self.offset
+        self.simpleButtonRect = pygame.Rect(self.x, self.yPlay, self.rectWidth, self.rectHeight)
+
+        # package 1
+        self.textMed = font.render('Package2', True, white, red)
+        self.textMedRect = self.textMed.get_rect()
+        self.textMedRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - self.offset + (self.rectHeight + 10))
+        self.yPlay = ((height / 5) * 3) - (self.rectHeight / 2) - 50 - self.offset + (self.rectHeight + 10)
+        self.medButtonRect = pygame.Rect(self.x, self.yPlay, self.rectWidth, self.rectHeight)
+
+        # package 2
+        self.textHard = font.render('Package3', True, white, red)
+        self.textHardRect = self.textHard.get_rect()
+        self.textHardRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - self.offset + ((self.rectHeight + 10) * 2))
+        self.yPlay = ((height / 5) * 3) - (self.rectHeight / 2) - 50 - self.offset + ((self.rectHeight + 10)*2)
+        self.hardButtonRect = pygame.Rect(self.x, self.yPlay, self.rectWidth, self.rectHeight)
+
+
+    def drawButtons(self):
+        pygame.draw.rect(screen, red, self.simpleButtonRect,  0, 3)
+        screen.blit(self.textStart, self.textStartRect)
+        pygame.draw.rect(screen, red, self.medButtonRect,  0, 3)
+        screen.blit(self.textMed, self.textMedRect)
+        pygame.draw.rect(screen, red, self.hardButtonRect,  0, 3)
+        screen.blit(self.textHard, self.textHardRect)
+
+    def checkClickPackage1(self, pos):
+        return self.simpleButtonRect.collidepoint(pos)
+    
+    def checkClickPackage2(self, pos):
+        return self.medButtonRect.collidepoint(pos)
+    
+    def checkClickPackage3(self, pos):
+        return self.hardButtonRect.collidepoint(pos)
 
     def update(self):
         screen.blit(self.textDiff, self.textDiffRect)
