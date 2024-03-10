@@ -10,7 +10,7 @@ pygame.init()
 # screen
 pygame.display.set_caption('Sixth Sense')
 curr_rounds = 1
-curr_player = 1
+curr_player = 2
 
 # drawing classes
 startMenu = StartMenu()
@@ -18,7 +18,7 @@ settingsMenu = SettingsMenu()
 packageMenu = PackageMenu()
 qs = questionsDict()
 #["Q1"]["question"]
-gameScreen = questionScreen(qs.qsDict, curr_rounds, curr_player)
+#gameScreen = questionScreen(qs.qsDict, curr_rounds, curr_player)
 
 #background
 start_bg_img = pygame.image.load("Sixth Sense.png")
@@ -34,7 +34,6 @@ clickedOnce = False
 
 # game loop 
 while running: 
-    curr_rounds +=1
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT: 
             running = False
@@ -75,11 +74,24 @@ while running:
                     clickedOnce = True     
 
             if (cur_state =="game"):
-                while (curr_rounds <rounds):
-                    gameScreen.update()
-                    if (questionScreen.checkClickNext(pos) and (not clickedOnce)):
+                clickedOnce = False
+                if (questionScreen.checkClickNext and (not clickedOnce)):
                         #NEXT QUESTION / PLAYER 2 TURN FUNCTIONALITY
-                        clickedOnce = True
+                    if(curr_player ==1):
+                        curr_player=2
+                        #display next player
+                    elif(curr_player==2):
+                        curr_rounds +=1
+                        curr_player=1
+                        pass
+                    
+                        
+                    gameScreen = questionScreen(qs.qsDict, curr_rounds, curr_player)
+                    gameScreen.update()
+
+                    
+
+
 
     # start menu 
     if (cur_state == "start"):
@@ -104,5 +116,7 @@ while running:
         screen.fill(white)
         screen.blit(bg_img, bg_img_rect)
         gameScreen.update()
+        pygame.display.flip()
+
 
     pygame.display.flip()
