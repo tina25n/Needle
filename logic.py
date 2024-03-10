@@ -1,7 +1,9 @@
 import random
+import women_package
 
+# dictionary of questions and options
 class questionsDict:
-    def __init__(self):
+    def init(self):
         #Dictionary
         self.qsDict = {"Q1": {
                     "question": "You are in an elevator, which floor are you going to?",
@@ -211,70 +213,6 @@ questions = {"Q1": {
                 }
 
 def main():
-
-    #Dictionary
-    questions = {"Q1": {
-                    "question": "You are in an elevator, which floor are you going to?",
-                    "simple": q1_simple,
-                    "medium": q1_medium,
-                    "difficult": q1_difficult
-                },
-                "Q2": {
-                    "question": "which number looks good to you?",
-                    "simple": q2_simple,
-                    "medium": q2_medium,
-                    "difficult": q2_difficult
-                },
-                "Q3": {
-                    "question": "Pick your favorite color",
-                    "simple": q3_simple,
-                    "medium": q3_medium,
-                    "difficult": q3_difficult
-                },
-                "Q4": {
-                    "question": "If you are stuck in a desert, which direction would you go?",
-                    "simple": q4_simple,
-                    "medium": q4_medium,
-                    "difficult": q4_difficult
-                }
-                }
-
-    print(questions["Q1"]["question"])
-    print("Q1 simple:", ', '.join(map(str, questions["Q1"]["simple"]()))) 
-    print("Q1 medium:", ', '.join(map(str, questions["Q1"]["medium"]())))
-    print("Q1 difficult:", ', '.join(map(str, questions["Q1"]["difficult"]())))
-
-    print(questions["Q2"]["question"])
-    print("Q2 simple:", ', '.join(map(str, questions["Q2"]["simple"]())))
-    print("Q2 medium:", ', '.join(map(str, questions["Q2"]["medium"]())))
-    print("Q2 difficult:", ', '.join(map(str, questions["Q2"]["difficult"]())))
-
-    print(questions["Q3"]["question"])
-    print("Q3 simple:", ', '.join(map(str, questions["Q3"]["simple"]())))
-    print("Q3 medium:", ', '.join(map(str, questions["Q3"]["medium"]())))
-    print("Q3 difficult:", ', '.join(map(str, questions["Q3"]["difficult"]())))
-
-    print(questions["Q4"]["question"])
-    print("Q4 simple:", ', '.join(map(str, questions["Q4"]["simple"]())))
-    print("Q4 medium:", ', '.join(map(str, questions["Q4"]["medium"]())))
-    print("Q4 difficult:", ', '.join(map(str, questions["Q4"]["difficult"]())))
-
-    print("0 to 5 in a row")
-    print(sumSocre([0, 0, 0, 0, 0]))
-    print(sumSocre([1, 0, 0, 0, 0]))
-    print(sumSocre([1, 1, 0, 0, 0]))
-    print(sumSocre([1, 1, 1, 0, 0]))
-    print(sumSocre([1, 1, 1, 1, 0]))
-    print(sumSocre([1, 1, 1, 1, 1]))
-
-    print("three in a row vs not")
-    print(sumSocre([1, 1, 1, 0, 0]))
-    print(sumSocre([1, 0, 0, 1, 1]))
-    print(sumSocre([1, 0, 1, 0, 1]))
-
-    print("four in a row vs not")
-    print(sumSocre([1, 1, 1, 1, 0]))
-    print(sumSocre([1, 1, 0, 1, 1]))
 
 
 main()
