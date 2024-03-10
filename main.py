@@ -9,8 +9,6 @@ pygame.init()
 
 # screen
 pygame.display.set_caption('Sixth Sense')
-curr_rounds = 1
-curr_player = 2
 
 # drawing classes
 startMenu = StartMenu()
@@ -63,6 +61,8 @@ while running:
                     clickedOnce = True
             # package
             if (cur_state == "packages"):
+                curr_rounds = 1
+                curr_player = 0
                 if (packageMenu.checkClickPackage1 and (not clickedOnce)):
                     cur_state = "game"
                     clickedOnce = True      
@@ -75,19 +75,26 @@ while running:
 
             if (cur_state =="game"):
                 clickedOnce = False
+                numqs=len(qs.qsDict)
                 if (questionScreen.checkClickNext and (not clickedOnce)):
                         #NEXT QUESTION / PLAYER 2 TURN FUNCTIONALITY
-                    if(curr_player ==1):
-                        curr_player=2
+                    if(curr_rounds < rounds and curr_rounds<=numqs):
+                        #start player
+                        if(curr_player ==0):
+                            curr_player=1
+                        #endgame if round is last and player=2
+                        elif(curr_player ==2 and (curr_rounds ==rounds-1 or curr_rounds==numqs)):
+                            cur_state = "score"
                         #display next player
-                    elif(curr_player==2):
-                        curr_rounds +=1
-                        curr_player=1
-                        pass
+                        elif(curr_player==1):
+                            curr_player=2
+                        elif(curr_player==2):
+                            curr_player=1
+                            curr_rounds +=1
                     
-                        
                     gameScreen = questionScreen(qs.qsDict, curr_rounds, curr_player)
                     gameScreen.update()
+
 
                     
 
@@ -116,7 +123,11 @@ while running:
         screen.fill(white)
         screen.blit(bg_img, bg_img_rect)
         gameScreen.update()
-        pygame.display.flip()
+
+    #score
+    if (cur_state == "score"):
+        screen.fill(white)
+        screen.blit(bg_img, bg_img_rect)
 
 
     pygame.display.flip()

@@ -28,7 +28,6 @@ class questionScreen:
         self.nextButtonRect = pygame.Rect(self.x, self.yPlay, self.rectWidth, self.rectHeight)
 
     def checkClickNext(self, pos):
-        print("clicked")
         return self.nextButtonRect.collidepoint(pos)
     
     def drawNextButton(self):
@@ -39,3 +38,6 @@ class questionScreen:
         screen.blit(self.q1, self.q1Rect)
         screen.blit(self.player, self.playerRect)
         self.drawNextButton()
+
+
+        
