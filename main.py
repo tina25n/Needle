@@ -30,6 +30,7 @@ running = True
 cur_state = "start"
 clickedOnce = False
 ansList = []
+difficulty = ""
 
 # game loop 
 while running: 
@@ -52,12 +53,15 @@ while running:
             #settings
             if (cur_state == "settings"):
                 if (settingsMenu.checkClickSimple(pos) and (not clickedOnce)):
+                    difficulty = "simple"
                     cur_state = "packages"
                     clickedOnce = True
                 if (settingsMenu.checkClickMed(pos) and (not clickedOnce)):
+                    difficulty = "medium"
                     cur_state = "packages"
                     clickedOnce = True
                 if (settingsMenu.checkClickHard(pos) and (not clickedOnce)):
+                    difficulty = "hard"
                     cur_state = "packages"
                     clickedOnce = True
             # package
@@ -136,8 +140,9 @@ while running:
         screen.fill(white)
         screen.blit(bg_img, bg_img_rect)
         ansList.clear()
-        for i in range(6):
-            ansList.append(answerButton((((height / 5) * 3) - ((height / 7 - 50)) / 2) + (((height / 7 - 50) + 10) * i), "ans", 1))
+        ansQuesList = qs.qsDict["Q"+ str(curr_rounds)][difficulty]
+        for i in ansQuesList:
+            ansList.append(answerButton((((height / 5) * 3) - ((height / 7 - 50)) / 2) + (((height / 7 - 50) + 10) * ansQuesList.index(i)), str(i), curr_player))
         for ans in ansList:
             ans.drawButtons()
         gameScreen.update()
