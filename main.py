@@ -58,9 +58,14 @@ while running:
             # package
             if (cur_state == "packages"):
                 if (packageMenu.checkClickPackage1 and (not clickedOnce)):
-                    cur_state = "game"      
+                    cur_state = "game"
+                    clickedOnce = True      
                 if (packageMenu.checkClickPackage2 and (not clickedOnce)):
-                    cur_state = "game"                   
+                    cur_state = "game"
+                    clickedOnce = True
+                if (packageMenu.checkClickPackage3 and (not clickedOnce)):
+                    cur_state = "game"
+                    clickedOnce = True                       
 
     # start menu 
     if (cur_state == "start"):
