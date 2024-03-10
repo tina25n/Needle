@@ -7,25 +7,25 @@ class questionsDict:
                     "question": "You are in an elevator, which floor are you going to?",
                     "simple": q1_simple,
                     "medium": q1_medium,
-                    "hard": q1_hard
+                    "hard": q1_difficult
                 },
                 "Q2": {
                     "question": "which number looks good to you?",
                     "simple": q2_simple,
                     "medium": q2_medium,
-                    "hard": q2_hard
+                    "hard": q2_difficult
                 },
                 "Q3": {
                     "question": "Pick your favorite color",
                     "simple": q3_simple,
                     "medium": q3_medium,
-                    "hard": q3_hard
+                    "hard": q3_difficult
                 },
                 "Q4": {
                     "question": "If you are stuck in a desert, which direction would you go?",
                     "simple": q4_simple,
                     "medium": q4_medium,
-                    "hard": q4_hard
+                    "hard": q4_difficult
                 }
                 }
 
@@ -188,25 +188,25 @@ questions = {"Q1": {
                 "question": "You are in an elevator, which floor are you going to?",
                 "simple": q1_simple,
                 "medium": q1_medium,
-                "hard": q1_hard
+                "hard": q1_difficult
                 },
                 "Q2": {
                     "question": "which number looks good to you?",
                     "simple": q2_simple,
                     "medium": q2_medium,
-                    "hard": q2_hard
+                    "hard": q2_difficult
                 },
                 "Q3": {
                     "question": "Pick your favorite color",
                     "simple": q3_simple,
                     "medium": q3_medium,
-                    "hard": q3_hard
+                    "hard": q3_difficult
                 },
                 "Q4": {
                     "question": "If you are stuck in a desert, which direction would you go?",
                     "simple": q4_simple,
                     "medium": q4_medium,
-                    "hard": q4_hard
+                    "hard": q4_difficult
                 }
                 }
 
