@@ -29,11 +29,13 @@ class questionScreen:
         self.nextButtonRect = pygame.Rect(self.x, self.yPlay, self.rectWidth, self.rectHeight)
 
     def checkClickNext(self, poss):
-        return self.nextButtonRect.collidepoint(poss)
+        #return self.nextButtonRect.collidepoint(poss)
+        return False
     
     def drawNextButton(self):
-        pygame.draw.rect(screen, red, self.nextButtonRect,  0, 3)
-        screen.blit(self.textNext, self.textNextRect)
+        #pygame.draw.rect(screen, red, self.nextButtonRect,  0, 3)
+        #screen.blit(self.textNext, self.textNextRect)
+        pass
 
     def update(self):
         screen.blit(self.q1, self.q1Rect)
@@ -99,17 +101,17 @@ class scoreScreen:
         # subTitle display
         self.subtitletxt = fontLarge.render(subtitle, True, orange, white)
         self.subtitletxtRect = self.subtitletxt.get_rect()
-        self.subtitletxtRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 130)
+        self.subtitletxtRect.center = (width / 2, ((height / 5) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 130 + 50)
 
         # Score display
         self.scoretxt = fontLarge.render("Score: " + str(score), True, orange, white)
         self.scoretxtRect = self.scoretxt.get_rect()
-        self.scoretxtRect.center = (width / 2, ((height) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 130)
+        self.scoretxtRect.center = (width / 2, ((height) * 3) - (self.rectHeight / 2) - ((height / 7) / 4) - 50 - self.offset - 130 + 200)
 
         self.textpa = font.render('Play Again', True, white, red)
         self.textpaRect = self.textpa.get_rect()
         self.textpaRect.center = (width / 2, self.y - (self.rectHeight / 2) + 27)
-        self.yPlay = (self.y) - (self.rectHeight / 2)
+        self.yPlay = (self.y) - (self.rectHeight / 2) + 200
         self.paButtonRect = pygame.Rect(self.x, self.yPlay, self.rectWidth, self.rectHeight)
 
     def drawPAButton(self):
