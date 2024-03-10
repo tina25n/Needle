@@ -26,7 +26,7 @@ def q1_medium():
 
 
 # randomly generate 10 numbers from 1-34
-def q1_hard():
+def q1_difficult():
     answer = []
     for i in range(10):
         n = random.randint(1, 34)
@@ -59,7 +59,7 @@ def q2_medium():
 
 
 # randomly generate 10 numbers from 1-1000
-def q2_hard():
+def q2_difficult():
     answer = []
     for i in range(10):
         n = random.randint(1, 1000)
@@ -91,7 +91,7 @@ def q3_medium():
     return answer
 
 
-def q3_hard():
+def q3_difficult():
     colors = ["Red", "Blue", "Green", "Yellow", "Orange", "Purple", "Pink", "Brown", "Black", "White"]
     return colors
 
@@ -112,7 +112,7 @@ def q4_medium():
     return directions
 
 
-def q4_hard():
+def q4_difficult():
     directions = ["west", "east", "north", "south","northwest", "southwest", "northeast", "southeast"]
     return directions
 
@@ -164,47 +164,47 @@ def main():
                     "question": "You are in an elevator, which floor are you going to?",
                     "simple": q1_simple,
                     "medium": q1_medium,
-                    "hard": q1_hard
+                    "difficult": q1_difficult
                 },
                 "Q2": {
                     "question": "which number looks good to you?",
                     "simple": q2_simple,
                     "medium": q2_medium,
-                    "hard": q2_hard
+                    "difficult": q2_difficult
                 },
                 "Q3": {
                     "question": "Pick your favorite color",
                     "simple": q3_simple,
                     "medium": q3_medium,
-                    "hard": q3_hard
+                    "difficult": q3_difficult
                 },
                 "Q4": {
                     "question": "If you are stuck in dessert, which direction would you go?",
                     "simple": q4_simple,
                     "medium": q4_medium,
-                    "hard": q4_hard
+                    "difficult": q4_difficult
                 }
                 }
 
     print(questions["Q1"]["question"])
     print("Q1 simple:", ', '.join(map(str, questions["Q1"]["simple"]()))) 
     print("Q1 medium:", ', '.join(map(str, questions["Q1"]["medium"]())))
-    print("Q1 hard:", ', '.join(map(str, questions["Q1"]["hard"]())))
+    print("Q1 difficult:", ', '.join(map(str, questions["Q1"]["difficult"]())))
 
     print(questions["Q2"]["question"])
     print("Q2 simple:", ', '.join(map(str, questions["Q2"]["simple"]())))
     print("Q2 medium:", ', '.join(map(str, questions["Q2"]["medium"]())))
-    print("Q2 hard:", ', '.join(map(str, questions["Q2"]["hard"]())))
+    print("Q2 difficult:", ', '.join(map(str, questions["Q2"]["difficult"]())))
 
     print(questions["Q3"]["question"])
     print("Q3 simple:", ', '.join(map(str, questions["Q3"]["simple"]())))
     print("Q3 medium:", ', '.join(map(str, questions["Q3"]["medium"]())))
-    print("Q3 hard:", ', '.join(map(str, questions["Q3"]["hard"]())))
+    print("Q3 difficult:", ', '.join(map(str, questions["Q3"]["difficult"]())))
 
     print(questions["Q4"]["question"])
     print("Q4 simple:", ', '.join(map(str, questions["Q4"]["simple"]())))
     print("Q4 medium:", ', '.join(map(str, questions["Q4"]["medium"]())))
-    print("Q4 hard:", ', '.join(map(str, questions["Q4"]["hard"]())))
+    print("Q4 difficult:", ', '.join(map(str, questions["Q4"]["difficult"]())))
 
     print("0 to 5 in a row")
     print(sumSocre([0, 0, 0, 0, 0]))
