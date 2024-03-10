@@ -39,4 +39,8 @@ class StartMenu():
     def update(self):
         self.drawPlayButton()
         self.drawQuitButton()
-        
+
+
+class SettingsMenu:
+    def __init__(self):
+        pass

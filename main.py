@@ -1,7 +1,7 @@
 import pygame
 from const import *
 from enum import Enum
-from drawing import StartMenu
+from drawing import StartMenu, SettingsMenu
 
 pygame.init()
 
@@ -30,18 +30,22 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONUP:
             pos = pygame.mouse.get_pos()
-            if (startMenu.checkClickSettings(pos)):
-                cur_state = "settings"
-            if (startMenu.checkClickEndGame(pos)):
-                running = False
-                pygame.display.quit()
-                pygame.quit()
+            
+            if (cur_state == "start"):
+                if (startMenu.checkClickSettings(pos)):
+                    cur_state = "settings"
+                if (startMenu.checkClickEndGame(pos)):
+                    running = False
+                    pygame.display.quit()
+                    pygame.quit()
 
+    # start menu
     if (cur_state == "start"):
         screen.fill(white)
         screen.blit(start_bg_img, start_bg_img_rect)
         startMenu.update()
 
+    # settings menu
     if (cur_state == "settings"):
         screen.fill(white)
         screen.blit(bg_img, bg_img_rect)
