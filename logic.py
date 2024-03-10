@@ -1,7 +1,35 @@
 import random
+import women_package
 
 # dictionary of questions and options
-
+class questionsDict:
+    def init(self):
+        #Dictionary
+        self.qsDict = {"Q1": {
+                    "question": "You are in an elevator, which floor are you going to?",
+                    "simple": q1_simple,
+                    "medium": q1_medium,
+                    "hard": q1_difficult
+                },
+                "Q2": {
+                    "question": "which number looks good to you?",
+                    "simple": q2_simple,
+                    "medium": q2_medium,
+                    "hard": q2_difficult
+                },
+                "Q3": {
+                    "question": "Pick your favorite color",
+                    "simple": q3_simple,
+                    "medium": q3_medium,
+                    "hard": q3_difficult
+                },
+                "Q4": {
+                    "question": "If you are stuck in a desert, which direction would you go?",
+                    "simple": q4_simple,
+                    "medium": q4_medium,
+                    "hard": q4_difficult
+                }
+                }
 
 # randomly generate 2 numbers from 1-34
 def q1_simple():
@@ -92,7 +120,6 @@ def q3_medium():
 
 
 def q3_difficult():
-    answer = []
     colors = ["Red", "Blue", "Green", "Yellow", "Orange", "Purple", "Pink", "Brown", "Black", "White"]
     for i in range(6):
         n = colors[random.randint(0, 9)]
@@ -119,7 +146,7 @@ def q4_medium():
 
 
 def q4_difficult():
-    directions = ["west", "east", "north", "south","northwest", "southwest"]
+    directions = ["west", "east", "north", "south","northwest", "southwest", "northeast", "southeast"]
     return directions
 
 def q5_simple(): 
@@ -339,16 +366,12 @@ def sumSocre(scores):
 
     return round(bonus_score/len(scores), 2)
 
-
-
-
-def main():
-
-    questions = {"Q1": {
-                    "question": "You are in an elevator, which floor are you going to?",
-                    "simple": q1_simple,
-                    "medium": q1_medium,
-                    "difficult": q1_difficult
+#Dictionary
+questions = {"Q1": {
+                "question": "You are in an elevator, which floor are you going to?",
+                "simple": q1_simple,
+                "medium": q1_medium,
+                "hard": q1_difficult
                 },
                 "Q2": {
                     "question": "which number looks good to you?",
@@ -363,7 +386,7 @@ def main():
                     "difficult": q3_difficult
                 },
                 "Q4": {
-                    "question": "If you are stuck in dessert, which direction would you go?",
+                    "question": "If you are stuck in a desert, which direction would you go?",
                     "simple": q4_simple,
                     "medium": q4_medium,
                     "difficult": q4_difficult
